@@ -1,0 +1,462 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 48;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173DE9201A18F600923D19 /* AppDelegate.swift */; };
+		22173DEC201A18F600923D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173DEB201A18F600923D19 /* ViewController.swift */; };
+		22173DEF201A18F600923D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22173DED201A18F600923D19 /* Main.storyboard */; };
+		22173DF2201A18F600923D19 /* RingLabsTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */; };
+		22173DF4201A18F600923D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF3201A18F600923D19 /* Assets.xcassets */; };
+		22173DF7201A18F600923D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF5201A18F600923D19 /* LaunchScreen.storyboard */; };
+		22173E02201A18F600923D19 /* RingLabsTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E01201A18F600923D19 /* RingLabsTestTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		22173DFE201A18F600923D19 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 22173DDE201A18F600923D19 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 22173DE5201A18F600923D19;
+			remoteInfo = RingLabsTest;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		22173DE6201A18F600923D19 /* RingLabsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RingLabsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		22173DE9201A18F600923D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		22173DEB201A18F600923D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22173DEE201A18F600923D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RingLabsTest.xcdatamodel; sourceTree = "<group>"; };
+		22173DF3201A18F600923D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		22173DF6201A18F600923D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		22173DF8201A18F600923D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22173DFD201A18F600923D19 /* RingLabsTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RingLabsTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		22173E01201A18F600923D19 /* RingLabsTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLabsTestTests.swift; sourceTree = "<group>"; };
+		22173E03201A18F600923D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		22173DE3201A18F600923D19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22173DFA201A18F600923D19 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		22173DDD201A18F600923D19 = {
+			isa = PBXGroup;
+			children = (
+				22173DE8201A18F600923D19 /* RingLabsTest */,
+				22173E00201A18F600923D19 /* RingLabsTestTests */,
+				22173DE7201A18F600923D19 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		22173DE7201A18F600923D19 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				22173DE6201A18F600923D19 /* RingLabsTest.app */,
+				22173DFD201A18F600923D19 /* RingLabsTestTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		22173DE8201A18F600923D19 /* RingLabsTest */ = {
+			isa = PBXGroup;
+			children = (
+				22173DE9201A18F600923D19 /* AppDelegate.swift */,
+				22173DEB201A18F600923D19 /* ViewController.swift */,
+				22173DED201A18F600923D19 /* Main.storyboard */,
+				22173DF3201A18F600923D19 /* Assets.xcassets */,
+				22173DF5201A18F600923D19 /* LaunchScreen.storyboard */,
+				22173DF8201A18F600923D19 /* Info.plist */,
+				22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */,
+			);
+			path = RingLabsTest;
+			sourceTree = "<group>";
+		};
+		22173E00201A18F600923D19 /* RingLabsTestTests */ = {
+			isa = PBXGroup;
+			children = (
+				22173E01201A18F600923D19 /* RingLabsTestTests.swift */,
+				22173E03201A18F600923D19 /* Info.plist */,
+			);
+			path = RingLabsTestTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		22173DE5201A18F600923D19 /* RingLabsTest */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22173E06201A18F600923D19 /* Build configuration list for PBXNativeTarget "RingLabsTest" */;
+			buildPhases = (
+				22173DE2201A18F600923D19 /* Sources */,
+				22173DE3201A18F600923D19 /* Frameworks */,
+				22173DE4201A18F600923D19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = RingLabsTest;
+			productName = RingLabsTest;
+			productReference = 22173DE6201A18F600923D19 /* RingLabsTest.app */;
+			productType = "com.apple.product-type.application";
+		};
+		22173DFC201A18F600923D19 /* RingLabsTestTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 22173E09201A18F600923D19 /* Build configuration list for PBXNativeTarget "RingLabsTestTests" */;
+			buildPhases = (
+				22173DF9201A18F600923D19 /* Sources */,
+				22173DFA201A18F600923D19 /* Frameworks */,
+				22173DFB201A18F600923D19 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				22173DFF201A18F600923D19 /* PBXTargetDependency */,
+			);
+			name = RingLabsTestTests;
+			productName = RingLabsTestTests;
+			productReference = 22173DFD201A18F600923D19 /* RingLabsTestTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		22173DDE201A18F600923D19 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0920;
+				LastUpgradeCheck = 0920;
+				ORGANIZATIONNAME = skutnii;
+				TargetAttributes = {
+					22173DE5201A18F600923D19 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+					};
+					22173DFC201A18F600923D19 = {
+						CreatedOnToolsVersion = 9.2;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 22173DE5201A18F600923D19;
+					};
+				};
+			};
+			buildConfigurationList = 22173DE1201A18F600923D19 /* Build configuration list for PBXProject "RingLabsTest" */;
+			compatibilityVersion = "Xcode 8.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 22173DDD201A18F600923D19;
+			productRefGroup = 22173DE7201A18F600923D19 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				22173DE5201A18F600923D19 /* RingLabsTest */,
+				22173DFC201A18F600923D19 /* RingLabsTestTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		22173DE4201A18F600923D19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22173DF7201A18F600923D19 /* LaunchScreen.storyboard in Resources */,
+				22173DF4201A18F600923D19 /* Assets.xcassets in Resources */,
+				22173DEF201A18F600923D19 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22173DFB201A18F600923D19 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		22173DE2201A18F600923D19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22173DEC201A18F600923D19 /* ViewController.swift in Sources */,
+				22173DF2201A18F600923D19 /* RingLabsTest.xcdatamodeld in Sources */,
+				22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		22173DF9201A18F600923D19 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				22173E02201A18F600923D19 /* RingLabsTestTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		22173DFF201A18F600923D19 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 22173DE5201A18F600923D19 /* RingLabsTest */;
+			targetProxy = 22173DFE201A18F600923D19 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		22173DED201A18F600923D19 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22173DEE201A18F600923D19 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		22173DF5201A18F600923D19 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				22173DF6201A18F600923D19 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		22173E04201A18F600923D19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		22173E05201A18F600923D19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		22173E07201A18F600923D19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RingLabsTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		22173E08201A18F600923D19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RingLabsTest/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		22173E0A201A18F600923D19 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RingLabsTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RingLabsTest.app/RingLabsTest";
+			};
+			name = Debug;
+		};
+		22173E0B201A18F600923D19 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = RingLabsTestTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTestTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RingLabsTest.app/RingLabsTest";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		22173DE1201A18F600923D19 /* Build configuration list for PBXProject "RingLabsTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22173E04201A18F600923D19 /* Debug */,
+				22173E05201A18F600923D19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22173E06201A18F600923D19 /* Build configuration list for PBXNativeTarget "RingLabsTest" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22173E07201A18F600923D19 /* Debug */,
+				22173E08201A18F600923D19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		22173E09201A18F600923D19 /* Build configuration list for PBXNativeTarget "RingLabsTestTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				22173E0A201A18F600923D19 /* Debug */,
+				22173E0B201A18F600923D19 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */,
+			);
+			currentVersion = 22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */;
+			path = RingLabsTest.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 22173DDE201A18F600923D19 /* Project object */;
+}
