@@ -16,6 +16,11 @@
 		22173E17201A205400923D19 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E16201A205400923D19 /* Feed.swift */; };
 		22173E19201A206C00923D19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E18201A206C00923D19 /* Post.swift */; };
 		22173E1D201A2C3000923D19 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E1C201A2C3000923D19 /* PostCell.swift */; };
+		22173E1F201A336F00923D19 /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E1E201A336F00923D19 /* Reddit.swift */; };
+		22173E22201A363700923D19 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22173E21201A363700923D19 /* SafariServices.framework */; };
+		22173E26201A415C00923D19 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E25201A415C00923D19 /* URL+Query.swift */; };
+		22173E28201A534700923D19 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E27201A534700923D19 /* OAuthViewController.swift */; };
+		22173E2A201A552600923D19 /* OAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E29201A552600923D19 /* OAuthView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -42,6 +47,11 @@
 		22173E16201A205400923D19 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		22173E18201A206C00923D19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		22173E1C201A2C3000923D19 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		22173E1E201A336F00923D19 /* Reddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
+		22173E21201A363700923D19 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
+		22173E25201A415C00923D19 /* URL+Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Query.swift"; sourceTree = "<group>"; };
+		22173E27201A534700923D19 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
+		22173E29201A552600923D19 /* OAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -49,6 +59,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22173E22201A363700923D19 /* SafariServices.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -68,6 +79,7 @@
 				22173DE8201A18F600923D19 /* RingLabsTest */,
 				22173E00201A18F600923D19 /* RingLabsTestTests */,
 				22173DE7201A18F600923D19 /* Products */,
+				22173E20201A363700923D19 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -92,6 +104,10 @@
 				22173E16201A205400923D19 /* Feed.swift */,
 				22173E18201A206C00923D19 /* Post.swift */,
 				22173E1C201A2C3000923D19 /* PostCell.swift */,
+				22173E1E201A336F00923D19 /* Reddit.swift */,
+				22173E25201A415C00923D19 /* URL+Query.swift */,
+				22173E27201A534700923D19 /* OAuthViewController.swift */,
+				22173E29201A552600923D19 /* OAuthView.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -103,6 +119,14 @@
 				22173E03201A18F600923D19 /* Info.plist */,
 			);
 			path = RingLabsTestTests;
+			sourceTree = "<group>";
+		};
+		22173E20201A363700923D19 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				22173E21201A363700923D19 /* SafariServices.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,9 +233,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
+				22173E1F201A336F00923D19 /* Reddit.swift in Sources */,
 				22173E17201A205400923D19 /* Feed.swift in Sources */,
 				22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */,
+				22173E28201A534700923D19 /* OAuthViewController.swift in Sources */,
 				22173E19201A206C00923D19 /* Post.swift in Sources */,
+				22173E2A201A552600923D19 /* OAuthView.swift in Sources */,
+				22173E26201A415C00923D19 /* URL+Query.swift in Sources */,
 				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -368,6 +396,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -383,6 +412,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";

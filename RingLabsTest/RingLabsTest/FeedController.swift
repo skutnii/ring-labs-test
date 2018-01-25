@@ -10,7 +10,11 @@ import UIKit
 
 class FeedController: UIViewController, UITableViewDataSource {
     
-    var feed : Feed = Feed()
+    var feed : Feed = Feed() {
+        didSet {
+            self.contentView.reloadData()
+        }
+    }
     
     var contentView: UITableView {
         get {
@@ -38,6 +42,29 @@ class FeedController: UIViewController, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    var preventLoad = false
+    
+    override func viewDidAppear(_ animated: Bool) {
+        if (preventLoad) {
+            return
+        }
+        
+        let authController = OAuthViewController()
+        authController.title = "Authorize with Reddit"
+        authController.modalPresentationStyle = .fullScreen
+        present(authController, animated: true) {
+            Reddit.authorize(authController)
+        }
+        
+        self.feed = Feed.cached ?? Feed()
+        Feed.sync() {
+            [weak self] feed in
+            self?.feed = feed
+        }
+        
+        preventLoad = true
     }
 
     override func didReceiveMemoryWarning() {

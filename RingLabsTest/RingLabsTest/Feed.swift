@@ -12,10 +12,9 @@ class Feed {
     var posts : [Post] = []
     var timestamp: Date?
     
-    static var cached: Feed? = nil
+    static var cached: Feed? = Feed()
     
     class func sync(_ onSync: @escaping (Feed) -> ()) {
-        
     }
     
     init(posts: [Post], timestamp: Date) {
