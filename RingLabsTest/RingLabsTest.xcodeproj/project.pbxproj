@@ -21,6 +21,7 @@
 		22173E26201A415C00923D19 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E25201A415C00923D19 /* URL+Query.swift */; };
 		22173E28201A534700923D19 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E27201A534700923D19 /* OAuthViewController.swift */; };
 		22173E2A201A552600923D19 /* OAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E29201A552600923D19 /* OAuthView.swift */; };
+		22173E2C201A6C1000923D19 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E2B201A6C1000923D19 /* Promise.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		22173E25201A415C00923D19 /* URL+Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Query.swift"; sourceTree = "<group>"; };
 		22173E27201A534700923D19 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
 		22173E29201A552600923D19 /* OAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthView.swift; sourceTree = "<group>"; };
+		22173E2B201A6C1000923D19 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +110,7 @@
 				22173E25201A415C00923D19 /* URL+Query.swift */,
 				22173E27201A534700923D19 /* OAuthViewController.swift */,
 				22173E29201A552600923D19 /* OAuthView.swift */,
+				22173E2B201A6C1000923D19 /* Promise.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -239,6 +242,7 @@
 				22173E28201A534700923D19 /* OAuthViewController.swift in Sources */,
 				22173E19201A206C00923D19 /* Post.swift in Sources */,
 				22173E2A201A552600923D19 /* OAuthView.swift in Sources */,
+				22173E2C201A6C1000923D19 /* Promise.swift in Sources */,
 				22173E26201A415C00923D19 /* URL+Query.swift in Sources */,
 				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,
 			);

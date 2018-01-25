@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import SafariServices
 
 //Reddit API access
 class Reddit {
