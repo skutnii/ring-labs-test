@@ -8,18 +8,31 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDataSource {
+class FeedController: UIViewController, UITableViewDataSource {
+    
+    var feed : Feed = Feed()
+    
+    var contentView: UITableView {
+        get {
+            return view as! UITableView
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+        return feed.posts.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        let cell = (tableView.dequeueReusableCell(withIdentifier: PostCell.ID) as? PostCell) ?? PostCell()
+        let post = feed.posts[indexPath.row]
+        cell.post = post
+        return cell
     }
     
-    
     override func loadView() {
-        
+        let tView = UITableView(frame: CGRect.zero);
+        tView.dataSource = self
+        self.view = tView
     }
 
     override func viewDidLoad() {

@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173DE9201A18F600923D19 /* AppDelegate.swift */; };
-		22173DEC201A18F600923D19 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173DEB201A18F600923D19 /* ViewController.swift */; };
+		22173DEC201A18F600923D19 /* FeedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173DEB201A18F600923D19 /* FeedController.swift */; };
 		22173DEF201A18F600923D19 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22173DED201A18F600923D19 /* Main.storyboard */; };
-		22173DF2201A18F600923D19 /* RingLabsTest.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */; };
 		22173DF4201A18F600923D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF3201A18F600923D19 /* Assets.xcassets */; };
 		22173DF7201A18F600923D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF5201A18F600923D19 /* LaunchScreen.storyboard */; };
 		22173E02201A18F600923D19 /* RingLabsTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E01201A18F600923D19 /* RingLabsTestTests.swift */; };
+		22173E17201A205400923D19 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E16201A205400923D19 /* Feed.swift */; };
+		22173E19201A206C00923D19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E18201A206C00923D19 /* Post.swift */; };
+		22173E1D201A2C3000923D19 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E1C201A2C3000923D19 /* PostCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -29,15 +31,17 @@
 /* Begin PBXFileReference section */
 		22173DE6201A18F600923D19 /* RingLabsTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RingLabsTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22173DE9201A18F600923D19 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		22173DEB201A18F600923D19 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		22173DEB201A18F600923D19 /* FeedController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedController.swift; sourceTree = "<group>"; };
 		22173DEE201A18F600923D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = RingLabsTest.xcdatamodel; sourceTree = "<group>"; };
 		22173DF3201A18F600923D19 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22173DF6201A18F600923D19 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		22173DF8201A18F600923D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		22173DFD201A18F600923D19 /* RingLabsTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RingLabsTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22173E01201A18F600923D19 /* RingLabsTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLabsTestTests.swift; sourceTree = "<group>"; };
 		22173E03201A18F600923D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		22173E16201A205400923D19 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		22173E18201A206C00923D19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		22173E1C201A2C3000923D19 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,12 +84,14 @@
 			isa = PBXGroup;
 			children = (
 				22173DE9201A18F600923D19 /* AppDelegate.swift */,
-				22173DEB201A18F600923D19 /* ViewController.swift */,
+				22173DEB201A18F600923D19 /* FeedController.swift */,
 				22173DED201A18F600923D19 /* Main.storyboard */,
 				22173DF3201A18F600923D19 /* Assets.xcassets */,
 				22173DF5201A18F600923D19 /* LaunchScreen.storyboard */,
 				22173DF8201A18F600923D19 /* Info.plist */,
-				22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */,
+				22173E16201A205400923D19 /* Feed.swift */,
+				22173E18201A206C00923D19 /* Post.swift */,
+				22173E1C201A2C3000923D19 /* PostCell.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -202,9 +208,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				22173DEC201A18F600923D19 /* ViewController.swift in Sources */,
-				22173DF2201A18F600923D19 /* RingLabsTest.xcdatamodeld in Sources */,
+				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
+				22173E17201A205400923D19 /* Feed.swift in Sources */,
 				22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */,
+				22173E19201A206C00923D19 /* Post.swift in Sources */,
+				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,9 +366,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -372,9 +381,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest;
+				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -444,19 +454,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		22173DF0201A18F600923D19 /* RingLabsTest.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */,
-			);
-			currentVersion = 22173DF1201A18F600923D19 /* RingLabsTest.xcdatamodel */;
-			path = RingLabsTest.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 22173DDE201A18F600923D19 /* Project object */;
 }
