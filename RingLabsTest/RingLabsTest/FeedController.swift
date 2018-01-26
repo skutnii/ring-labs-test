@@ -55,14 +55,22 @@ class FeedController: UIViewController, UITableViewDataSource {
         authController.title = "Authorize with Reddit"
         authController.modalPresentationStyle = .fullScreen
         present(authController, animated: true) {
-            Reddit.authorize(authController)
+            [weak self] in
+            _ = Reddit.authorize(authController)
+                .then { _ in
+                    return Feed.sync()
+                }
+                .rescue { error in
+                    let message = (error as? String) ?? "Unknown error"
+                    let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+                    let dismiss = UIAlertAction(title: "Close", style: .default)
+                    alert.addAction(dismiss)
+                    self?.present(alert, animated: true, completion: nil)
+                    return nil
+                }
         }
         
         self.feed = Feed.cached ?? Feed()
-        Feed.sync() {
-            [weak self] feed in
-            self?.feed = feed
-        }
         
         preventLoad = true
     }

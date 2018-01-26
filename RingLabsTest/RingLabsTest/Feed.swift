@@ -14,7 +14,11 @@ class Feed {
     
     static var cached: Feed? = Feed()
     
-    class func sync(_ onSync: @escaping (Feed) -> ()) {
+    class func sync() -> Promise {
+        return Reddit.get("/top").then {
+            data in
+            print("Feed: ", data)
+        }
     }
     
     init(posts: [Post], timestamp: Date) {

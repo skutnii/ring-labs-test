@@ -9,111 +9,112 @@
 import Foundation
 
 //Promise API as in JS
-class Promise {
+protocol Thenable {
     typealias Handler = (Any?) throws -> Any?
+    func then(_ block: @escaping Handler) -> Thenable
+}
+
+fileprivate class Sequence : Thenable {
+    var _body: Handler
+    var _next: Sequence?
     
-    enum State {
-        case pending
-        case resolved
-        case rejected
+    init(_ body: @escaping Handler) {
+        _body = body
     }
     
-    private var _state : State = .pending
-    
-    var state : State {
-        get {
-            return _state
+    convenience init() {
+        self.init {
+            res in return res
         }
     }
     
-    private var _handle: [Promise.Handler] = []
-    private var _rescue: [Promise.Handler] = []
+    func then(_ block: @escaping Handler) -> Thenable {
+        return self.append(Sequence(block))
+    }
     
-    private func doResolve(_ result: Any?) -> Any? {
+    func append(_ sequence: Sequence?) -> Sequence {
+        guard nil == _next else {
+            return _next!.append(sequence)
+        }
+        
+        _next = sequence
+        return self
+    }
+}
+
+class Promise {
+    
+    private var _main : Sequence
+    private var _rescue: Sequence?
+    
+    typealias Handler = Thenable.Handler
+    
+    private init(main: Sequence, rescue:Sequence?) {
+        _main = main
+        _rescue = rescue
+    }
+    
+    convenience init() {
+        self.init(main: Sequence({ res in return res }), rescue: nil)
+    }
+    
+    private func chain(next: Sequence?, resc: Sequence?) -> Promise {
+        _ = _main.append(next)
+        
+        if (nil == _rescue)  {
+            _rescue = resc
+        } else {
+            _ = _rescue!.append(resc)
+        }
+        
+        return self
+    }
+    
+    private func next(value: Any?) -> Any? {
         do {
-            var _result = result
-            while (_handle.count > 0) {
-                let handler = _handle.remove(at: 0)
-                _result = try handler(_result)
-                
-                let deferred = _result as? Promise
-                if (nil != deferred) {
-                    return deferred!.then {
-                        res in
-                        self.doResolve(res)
-                    }
-                }
+            
+            let result = try _main._body(value)
+            guard nil == result as? Promise else {
+                return (result as! Promise).chain(next: _main._next, resc: _rescue)
             }
             
-            return _result
+            let next = _main._next
+            guard nil != next else {
+                return result
+            }
+            
+            return Promise(main:next!, rescue:_rescue).next(value: result)
         } catch {
-            return doReject(error)
+            reject(error)
+            return nil
         }
     }
     
-    private func doReject(_ err: Any?) -> Any? {
-        var _error = err
-        while (_rescue.count > 0) {
-            let handler = _rescue.remove(at: 0)
-            _error = try? handler(_error)
-        }
-
-        _state = .rejected
-        return _error
+    func resolve(_ value: Any?) {
+        _ = next(value: value)
     }
     
-    private var _mainClosed = false
-    
-    func then(_ handler: @escaping Promise.Handler) -> Promise {
-        guard  .pending == _state else {
-            return self
+    func reject(_ error: Any?) {
+        var err = error
+        var rescue: Sequence? = _rescue
+        while (nil != rescue) {
+            err = (try? rescue!._body(err)) ?? nil
+            rescue = rescue!._next
         }
-        
-        guard !_mainClosed else {
-            return rescue(handler)
-        }
-        
-        _handle.append(handler)
-        
-        return self
     }
     
-    func rescue(_ handler: @escaping Promise.Handler) -> Promise {
-        guard .pending == _state else {
-            return self
-        }
-        
-        _mainClosed = true
-        _rescue.append(handler)
-        
-        return self
+    func then(_ block: @escaping Handler) -> Promise {
+        return self.chain(next: Sequence(block), resc: nil)
     }
     
-    private init() {
-        
+    func rescue(_ block: @escaping Handler) -> Thenable {
+        _ = self.chain(next: nil, resc: Sequence(block))
+        return _rescue!
     }
- 
+    
     typealias Resolver = (Any?) -> ()
-
-    var resolve: Resolver {
-        get {
-            return {
-                res in
-                _ = self.doResolve(res)
-            }
-        }
-    }
-    
-    var reject: Resolver {
-        get {
-            return {
-                res in
-                _ = self.doReject(res)
-            }
-        }
-    }
-    
-    init(_ block: @escaping (@escaping Resolver, @escaping Resolver) ->()) {
+    convenience init(_ block: @escaping (@escaping Resolver, @escaping Resolver) ->()) {
+        self.init()
         DispatchQueue.main.async {
             block(self.resolve, self.reject)
         }
@@ -129,7 +130,11 @@ class Promise {
     class func reject(_ res: Any?) -> Promise {
         return Promise {
             resolve, reject in
-            resolve(res)
+            reject(res)
         }
+    }
+    
+    class func all(_ promises: [Promise]) {
+        
     }
 }
