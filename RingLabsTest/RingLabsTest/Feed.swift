@@ -31,7 +31,7 @@ class Feed : Thing {
     }
     
     class func sync() -> Promise {
-        return HTTP.fetchJSON("https://www.reddit.com/top.json").then {
+        return Fetch.json("https://www.reddit.com/top.json").then {
             value in
             let raw = value as? Raw
             guard nil != raw else {

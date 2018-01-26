@@ -8,18 +8,13 @@
 
 import Foundation
 
-class HTTP {
+class Fetch {
     
-    class func fetch(_ link: String) -> Promise {
+    class func request(_ request: URLRequest) -> Promise {
         return Promise {
             resolve, reject in
-            let url = URL(string: link)
-            guard nil != url else {
-                reject("Invalid URL \(link)")
-                return
-            }
             
-            URLSession.shared.dataTask(with: url!) {
+            URLSession.shared.dataTask(with: request) {
                 data, response, error in
                 guard nil == error else {
                     reject("Connection error")
@@ -42,8 +37,8 @@ class HTTP {
         }
     }
     
-    class func fetchJSON(_ link: String) -> Promise {
-        return fetch(link).then {
+    class func json(request: URLRequest) -> Promise {
+        return self.request(request).then  {
             result in
             let data = result as! Data
             do {
@@ -54,5 +49,15 @@ class HTTP {
             }
         }
     }
+    
+    class func json(_ link: String) -> Promise {
+        let url = URL(string: link)
+        guard nil != url else {
+            return Promise.reject("Invalid URL \(link)")
+        }
+        
+        return json(request: URLRequest(url: url!))
+    }
+    
     
 }

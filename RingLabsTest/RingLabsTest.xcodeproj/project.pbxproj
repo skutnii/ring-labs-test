@@ -18,7 +18,7 @@
 		22173E22201A363700923D19 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22173E21201A363700923D19 /* SafariServices.framework */; };
 		22173E26201A415C00923D19 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E25201A415C00923D19 /* URL+Query.swift */; };
 		22173E2C201A6C1000923D19 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E2B201A6C1000923D19 /* Promise.swift */; };
-		221C15AE201BA166007AB34F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AD201BA166007AB34F /* HTTP.swift */; };
+		221C15AE201BA166007AB34F /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AD201BA166007AB34F /* Fetch.swift */; };
 		221C15B0201BACF6007AB34F /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AF201BACF6007AB34F /* Thing.swift */; };
 		221C15B2201BB4FB007AB34F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15B1201BB4FB007AB34F /* Feed.swift */; };
 /* End PBXBuildFile section */
@@ -49,7 +49,7 @@
 		22173E21201A363700923D19 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		22173E25201A415C00923D19 /* URL+Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Query.swift"; sourceTree = "<group>"; };
 		22173E2B201A6C1000923D19 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
-		221C15AD201BA166007AB34F /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		221C15AD201BA166007AB34F /* Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
 		221C15AF201BACF6007AB34F /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		221C15B1201BB4FB007AB34F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -105,7 +105,7 @@
 				22173E1C201A2C3000923D19 /* PostCell.swift */,
 				22173E25201A415C00923D19 /* URL+Query.swift */,
 				22173E2B201A6C1000923D19 /* Promise.swift */,
-				221C15AD201BA166007AB34F /* HTTP.swift */,
+				221C15AD201BA166007AB34F /* Fetch.swift */,
 				221C15AF201BACF6007AB34F /* Thing.swift */,
 				221C15B1201BB4FB007AB34F /* Feed.swift */,
 			);
@@ -238,7 +238,7 @@
 				22173E19201A206C00923D19 /* Post.swift in Sources */,
 				221C15B0201BACF6007AB34F /* Thing.swift in Sources */,
 				22173E2C201A6C1000923D19 /* Promise.swift in Sources */,
-				221C15AE201BA166007AB34F /* HTTP.swift in Sources */,
+				221C15AE201BA166007AB34F /* Fetch.swift in Sources */,
 				22173E26201A415C00923D19 /* URL+Query.swift in Sources */,
 				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,
 			);
