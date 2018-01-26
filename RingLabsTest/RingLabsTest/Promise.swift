@@ -134,7 +134,97 @@ class Promise {
         }
     }
     
-    class func all(_ promises: [Promise]) {
+    class func all(_ promises: [Promise]) -> Promise {
+        guard promises.count > 0 else {
+            return Promise.resolve(true)
+        }
         
+        class Semaphore {
+            let max : Int
+
+            var resolved : Int = 0
+            var rejected: Bool = false
+            
+            init(_ count: Int) {
+                max = count
+            }
+        }
+        
+        let semaphore = Semaphore(promises.count)
+        let combo = Promise()
+        
+        promises.forEach {
+            promise in
+            _ = promise.then {
+                result in
+                if (!semaphore.rejected) {
+                    semaphore.resolved += 1
+                    if (semaphore.resolved == semaphore.max) {
+                        combo.resolve(result)
+                    }
+                }
+                
+                return result
+            } .rescue {
+                error in
+                if (!semaphore.rejected) {
+                    semaphore.rejected = true
+                    combo.reject(error)
+                }
+                
+                return error
+            }
+        }
+        
+        return combo
+    }
+    
+    class func race(_ promises: [Promise]) -> Promise {
+        guard promises.count > 0 else {
+            return Promise.resolve(true)
+        }
+        
+        class Semaphore {
+            var resolved = false
+            var rejected: Int = 0
+            let max: Int
+            
+            var errors = [Any]()
+            init(_ count: Int) {
+                max = count
+            }
+        }
+        
+        let semaphore = Semaphore(promises.count)
+        let combo = Promise()
+        
+        promises.forEach {
+            promise in
+            _ = promise.then {
+                result in
+                if (!semaphore.resolved) {
+                    semaphore.resolved = true
+                    combo.resolve(result)
+                }
+                
+                return result
+            } .rescue {
+                error in
+                if (!semaphore.resolved) {
+                    if (nil != error) {
+                        semaphore.errors.append(error!)
+                    }
+                    
+                    semaphore.rejected += 1
+                    if (semaphore.max == semaphore.rejected) {
+                        combo.reject(semaphore.errors)
+                    }
+                }
+                
+                return error
+            }
+        }
+        
+        return combo
     }
 }
