@@ -145,6 +145,8 @@ class Promise {
             var resolved : Int = 0
             var rejected: Bool = false
             
+            var results = [Any]()
+            
             init(_ count: Int) {
                 max = count
             }
@@ -158,9 +160,13 @@ class Promise {
             _ = promise.then {
                 result in
                 if (!semaphore.rejected) {
+                    if (nil != result) {
+                        semaphore.results.append(result!)
+                    }
+                    
                     semaphore.resolved += 1
                     if (semaphore.resolved == semaphore.max) {
-                        combo.resolve(result)
+                        combo.resolve(semaphore.results)
                     }
                 }
                 
