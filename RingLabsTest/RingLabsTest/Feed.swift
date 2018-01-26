@@ -2,58 +2,44 @@
 //  Feed.swift
 //  RingLabsTest
 //
-//  Created by Serge Kutny on 1/25/18.
+//  Created by Serge Kutny on 1/26/18.
 //  Copyright © 2018 skutnii. All rights reserved.
 //
 
 import Foundation
 
-class Feed {
+class Feed : Thing {
     var posts : [Post] = []
-    var timestamp: Date?
+    let timestamp = Date()
     
-    static var cached: Feed? = Feed()
+    static let CHILDREN = "children"
+    static let kind = "Listing"
     
-    class func sync() -> Promise {
-        return Reddit.get("/top").then {
-            data in
-            print("Feed: ", data)
-        }
-    }
-    
-    init(posts: [Post], timestamp: Date) {
-        self.posts = posts
-        self.timestamp = timestamp
-    }
+    static var cached = Feed()
     
     convenience init() {
-        self.init(posts: [], timestamp: Date())
+        self.init(kind: Feed.kind)
     }
     
-    typealias Raw = [String: Any]
-    
-    static let POSTS = "posts"
-    static let TS = "timestamp"
-    
-    convenience init(raw: Raw) {
-        let ts = (raw[Feed.TS] as? Date) ?? Date()
-        let rawPosts = (raw[Feed.POSTS] as? [Post.Raw]) ?? []
-        let posts = rawPosts.map() { data in
-            return Post(data)
+    override func update(with data: Thing.Raw) {
+        let children = data[Feed.CHILDREN] as? [Thing.Raw]
+        guard nil != children else {
+            return
         }
         
-        self.init(posts: posts, timestamp: ts)
+        posts = Post.parse(array:children!)
     }
     
-    var data : Raw {
-        get {
-            return [
-                Feed.TS: self.timestamp,
-                Feed.POSTS: self.posts.map() {
-                    post in
-                    return post.data
-                }
-            ]
+    class func sync() -> Promise {
+        return HTTP.fetchJSON("https://www.reddit.com/top.json").then {
+            value in
+            let raw = value as? Raw
+            guard nil != raw else {
+                return Promise.reject("Invalid data format")
+            }
+            
+            cached = Feed(raw: raw!)
+            return cached
         }
     }
 }

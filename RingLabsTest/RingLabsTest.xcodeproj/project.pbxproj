@@ -13,15 +13,14 @@
 		22173DF4201A18F600923D19 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF3201A18F600923D19 /* Assets.xcassets */; };
 		22173DF7201A18F600923D19 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 22173DF5201A18F600923D19 /* LaunchScreen.storyboard */; };
 		22173E02201A18F600923D19 /* RingLabsTestTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E01201A18F600923D19 /* RingLabsTestTests.swift */; };
-		22173E17201A205400923D19 /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E16201A205400923D19 /* Feed.swift */; };
 		22173E19201A206C00923D19 /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E18201A206C00923D19 /* Post.swift */; };
 		22173E1D201A2C3000923D19 /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E1C201A2C3000923D19 /* PostCell.swift */; };
-		22173E1F201A336F00923D19 /* Reddit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E1E201A336F00923D19 /* Reddit.swift */; };
 		22173E22201A363700923D19 /* SafariServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 22173E21201A363700923D19 /* SafariServices.framework */; };
 		22173E26201A415C00923D19 /* URL+Query.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E25201A415C00923D19 /* URL+Query.swift */; };
-		22173E28201A534700923D19 /* OAuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E27201A534700923D19 /* OAuthViewController.swift */; };
-		22173E2A201A552600923D19 /* OAuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E29201A552600923D19 /* OAuthView.swift */; };
 		22173E2C201A6C1000923D19 /* Promise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22173E2B201A6C1000923D19 /* Promise.swift */; };
+		221C15AE201BA166007AB34F /* HTTP.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AD201BA166007AB34F /* HTTP.swift */; };
+		221C15B0201BACF6007AB34F /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AF201BACF6007AB34F /* Thing.swift */; };
+		221C15B2201BB4FB007AB34F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15B1201BB4FB007AB34F /* Feed.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,15 +44,14 @@
 		22173DFD201A18F600923D19 /* RingLabsTestTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RingLabsTestTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		22173E01201A18F600923D19 /* RingLabsTestTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RingLabsTestTests.swift; sourceTree = "<group>"; };
 		22173E03201A18F600923D19 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		22173E16201A205400923D19 /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 		22173E18201A206C00923D19 /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
 		22173E1C201A2C3000923D19 /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
-		22173E1E201A336F00923D19 /* Reddit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reddit.swift; sourceTree = "<group>"; };
 		22173E21201A363700923D19 /* SafariServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SafariServices.framework; path = System/Library/Frameworks/SafariServices.framework; sourceTree = SDKROOT; };
 		22173E25201A415C00923D19 /* URL+Query.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "URL+Query.swift"; sourceTree = "<group>"; };
-		22173E27201A534700923D19 /* OAuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthViewController.swift; sourceTree = "<group>"; };
-		22173E29201A552600923D19 /* OAuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OAuthView.swift; sourceTree = "<group>"; };
 		22173E2B201A6C1000923D19 /* Promise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Promise.swift; sourceTree = "<group>"; };
+		221C15AD201BA166007AB34F /* HTTP.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTP.swift; sourceTree = "<group>"; };
+		221C15AF201BACF6007AB34F /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
+		221C15B1201BB4FB007AB34F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,14 +101,13 @@
 				22173DF3201A18F600923D19 /* Assets.xcassets */,
 				22173DF5201A18F600923D19 /* LaunchScreen.storyboard */,
 				22173DF8201A18F600923D19 /* Info.plist */,
-				22173E16201A205400923D19 /* Feed.swift */,
 				22173E18201A206C00923D19 /* Post.swift */,
 				22173E1C201A2C3000923D19 /* PostCell.swift */,
-				22173E1E201A336F00923D19 /* Reddit.swift */,
 				22173E25201A415C00923D19 /* URL+Query.swift */,
-				22173E27201A534700923D19 /* OAuthViewController.swift */,
-				22173E29201A552600923D19 /* OAuthView.swift */,
 				22173E2B201A6C1000923D19 /* Promise.swift */,
+				221C15AD201BA166007AB34F /* HTTP.swift */,
+				221C15AF201BACF6007AB34F /* Thing.swift */,
+				221C15B1201BB4FB007AB34F /* Feed.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -236,13 +233,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
-				22173E1F201A336F00923D19 /* Reddit.swift in Sources */,
-				22173E17201A205400923D19 /* Feed.swift in Sources */,
+				221C15B2201BB4FB007AB34F /* Feed.swift in Sources */,
 				22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */,
-				22173E28201A534700923D19 /* OAuthViewController.swift in Sources */,
 				22173E19201A206C00923D19 /* Post.swift in Sources */,
-				22173E2A201A552600923D19 /* OAuthView.swift in Sources */,
+				221C15B0201BACF6007AB34F /* Thing.swift in Sources */,
 				22173E2C201A6C1000923D19 /* Promise.swift in Sources */,
+				221C15AE201BA166007AB34F /* HTTP.swift in Sources */,
 				22173E26201A415C00923D19 /* URL+Query.swift in Sources */,
 				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,
 			);

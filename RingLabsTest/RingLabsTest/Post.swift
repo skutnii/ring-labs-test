@@ -8,16 +8,18 @@
 
 import Foundation
 
-class Post {
-    typealias Raw = [String: Any]
+class Post : Thing {
     
-    init(_ raw: Raw) {
+    static let AUTHOR = "author"
+    var author: String = ""
+    
+    static let DATE = "created_utc"
+    var date: Date? = nil
+    
+    override func update(with data: Thing.Raw) {
+        author = data[Post.AUTHOR] as? String ?? ""
         
-    }
-    
-    var data : Raw {
-        get {
-            return [:]
-        }
+        let utcTimestamp = data[Post.DATE] as? TimeInterval ?? 0
+        date = Date(timeIntervalSince1970:utcTimestamp)
     }
 }
