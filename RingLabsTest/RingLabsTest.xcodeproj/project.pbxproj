@@ -21,6 +21,10 @@
 		221C15AE201BA166007AB34F /* Fetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AD201BA166007AB34F /* Fetch.swift */; };
 		221C15B0201BACF6007AB34F /* Thing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15AF201BACF6007AB34F /* Thing.swift */; };
 		221C15B2201BB4FB007AB34F /* Feed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 221C15B1201BB4FB007AB34F /* Feed.swift */; };
+		2277F2CB201C8DE300100502 /* WebImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CA201C8DE300100502 /* WebImage.swift */; };
+		2277F2CD201C8E9900100502 /* Observatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CC201C8E9900100502 /* Observatory.swift */; };
+		2277F2CF201CA1A200100502 /* Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CE201CA1A200100502 /* Observers.swift */; };
+		2277F2D1201CADE800100502 /* JSQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D0201CADE800100502 /* JSQ.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +56,10 @@
 		221C15AD201BA166007AB34F /* Fetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetch.swift; sourceTree = "<group>"; };
 		221C15AF201BACF6007AB34F /* Thing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thing.swift; sourceTree = "<group>"; };
 		221C15B1201BB4FB007AB34F /* Feed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Feed.swift; sourceTree = "<group>"; };
+		2277F2CA201C8DE300100502 /* WebImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebImage.swift; sourceTree = "<group>"; };
+		2277F2CC201C8E9900100502 /* Observatory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observatory.swift; sourceTree = "<group>"; };
+		2277F2CE201CA1A200100502 /* Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observers.swift; sourceTree = "<group>"; };
+		2277F2D0201CADE800100502 /* JSQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSQ.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -108,6 +116,10 @@
 				221C15AD201BA166007AB34F /* Fetch.swift */,
 				221C15AF201BACF6007AB34F /* Thing.swift */,
 				221C15B1201BB4FB007AB34F /* Feed.swift */,
+				2277F2CA201C8DE300100502 /* WebImage.swift */,
+				2277F2CC201C8E9900100502 /* Observatory.swift */,
+				2277F2CE201CA1A200100502 /* Observers.swift */,
+				2277F2D0201CADE800100502 /* JSQ.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -234,10 +246,14 @@
 			files = (
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
 				221C15B2201BB4FB007AB34F /* Feed.swift in Sources */,
+				2277F2CB201C8DE300100502 /* WebImage.swift in Sources */,
+				2277F2CD201C8E9900100502 /* Observatory.swift in Sources */,
 				22173DEA201A18F600923D19 /* AppDelegate.swift in Sources */,
 				22173E19201A206C00923D19 /* Post.swift in Sources */,
 				221C15B0201BACF6007AB34F /* Thing.swift in Sources */,
 				22173E2C201A6C1000923D19 /* Promise.swift in Sources */,
+				2277F2CF201CA1A200100502 /* Observers.swift in Sources */,
+				2277F2D1201CADE800100502 /* JSQ.swift in Sources */,
 				221C15AE201BA166007AB34F /* Fetch.swift in Sources */,
 				22173E26201A415C00923D19 /* URL+Query.swift in Sources */,
 				22173E1D201A2C3000923D19 /* PostCell.swift in Sources */,

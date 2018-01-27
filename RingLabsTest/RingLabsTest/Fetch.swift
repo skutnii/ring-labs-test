@@ -37,6 +37,15 @@ class Fetch {
         }
     }
     
+    class func from(_ link: String) -> Promise {
+        let url = URL(string: link)
+        guard nil != url else {
+            return Promise.reject("Invalid URL \(link)")
+        }
+        
+        return request(URLRequest(url: url!))
+    }
+    
     class func json(request: URLRequest) -> Promise {
         return self.request(request).then  {
             result in

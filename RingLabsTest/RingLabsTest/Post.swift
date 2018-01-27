@@ -10,21 +10,38 @@ import Foundation
 
 class Post : Thing {
     
-    static let AUTHOR = "author"
+    static let kind = "t3"
+    
     var author: String = ""
-    
-    static let DATE = "created_utc"
     var date: Date? = nil
-    
-    static let TITLE = "title"
     var title: String = ""
+    var commentCount: Int = 0
+    var thumbnail: WebImage?
+    var preview: WebImage?
     
     override func update(with data: Thing.Raw) {
-        author = data[Post.AUTHOR] as? String ?? ""
+        author = JSQ(data, "/author") as? String ?? ""
         
-        let utcTimestamp = data[Post.DATE] as? TimeInterval ?? 0
+        let utcTimestamp = JSQ(data, "/created_utc") as? TimeInterval ?? 0
         date = Date(timeIntervalSince1970:utcTimestamp)
         
-        title = data[Post.TITLE] as? String ?? ""
+        title = JSQ(data, "/title") as? String ?? ""
+        commentCount = JSQ(data, "/num_comments") as? Int ?? 0
+        
+        let thumbLink = JSQ(data, "/thumbnail") as? String ?? "default"
+        if (thumbLink != "default") {
+            let thumbUrl = URL(string: thumbLink)
+            if (nil != thumbUrl) {
+                thumbnail = WebImage(thumbUrl!)
+            }
+        }
+        
+        let previewSource = JSQ(data, "/preview/images/[0]/source/url") as? String
+        if (nil != previewSource) {
+            let url = URL(string:previewSource!)
+            if (nil != url) {
+                preview = WebImage(url!)
+            }
+        }
     }
 }
