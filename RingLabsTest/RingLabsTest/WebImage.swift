@@ -30,7 +30,7 @@ class WebImage : Observable {
             result in
             let data = result as? Data
             guard nil != data else {
-                return nil
+                return self
             }
             
             self.image = UIImage(data:data!)
