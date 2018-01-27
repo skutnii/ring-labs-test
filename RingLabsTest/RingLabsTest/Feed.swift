@@ -15,7 +15,31 @@ class Feed : Thing {
     static let CHILDREN = "children"
     static let kind = "Listing"
     
-    static var cached = Feed()
+    private static var cache: URL {
+        get {
+            let paths = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true)
+            let path = paths[0] + "/top.json"
+            return URL(fileURLWithPath:path)
+        }
+    }
+    
+    static var cached : Feed = {
+        let data = try? Data(contentsOf:cache)
+        guard nil != data else {
+            return Feed()
+        }
+        
+        do {
+            let raw = try JSONSerialization.jsonObject(with: data!, options: []) as? Thing.Raw
+            guard nil != raw else {
+                return Feed()
+            }
+            
+            return Feed(raw: raw!)
+        } catch {
+            return Feed()
+        }
+    } ()
     
     convenience init() {
         self.init(kind: Feed.kind)
@@ -31,15 +55,33 @@ class Feed : Thing {
     }
     
     class func sync() -> Promise {
-        return Fetch.json("https://www.reddit.com/top.json").then {
-            value in
-            let raw = value as? Raw
-            guard nil != raw else {
-                return Promise.reject("Invalid data format")
+        return Fetch.from("https://www.reddit.com/top.json").then {
+            res in
+            let data = res as? Data
+            guard nil != data else {
+                return cached
             }
             
-            cached = Feed(raw: raw!)
-            return cached
+            do {
+                let value = try JSONSerialization.jsonObject(with: data!, options: [])
+                let raw = value as? Raw
+                guard nil != raw else {
+                    return Promise.reject("Invalid data format")
+                }
+                
+                do {
+                    //Don't let cache errors mess with flow, so catching separately
+                    try data!.write(to: cache)
+                } catch {
+                    print("Cache error")
+                }
+                
+                cached = Feed(raw: raw!)
+                return cached
+            } catch {
+                return cached
+            }
+            
         } .then {
             res in
             for post in cached.posts {
