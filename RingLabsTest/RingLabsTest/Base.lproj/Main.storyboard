@@ -11,7 +11,7 @@
         <!--Navigation Controller-->
         <scene sceneID="dJy-6L-HxK">
             <objects>
-                <navigationController id="lP5-7G-tXF" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="lP5-7G-tXF" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sab-UA-7K5">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -27,7 +27,7 @@
         <!--Reddit Top-->
         <scene sceneID="2dd-Zq-wGO">
             <objects>
-                <viewController title="Reddit Top" id="ud0-IS-fxT" customClass="FeedController" customModule="RingLabsTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Top" title="Reddit Top" useStoryboardIdentifierAsRestorationIdentifier="YES" id="ud0-IS-fxT" customClass="FeedController" customModule="RingLabsTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" title="Reddit Top" id="3Sr-0B-ulM"/>
                     <connections>
                         <segue destination="Tis-KH-EtS" kind="push" identifier="FullSize" id="oKh-e8-Y2Y"/>
@@ -40,7 +40,7 @@
         <!--Full Image Controller-->
         <scene sceneID="2qk-dn-ziJ">
             <objects>
-                <viewController id="Tis-KH-EtS" customClass="FullImageController" customModule="RingLabsTest" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="Full" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Tis-KH-EtS" customClass="FullImageController" customModule="RingLabsTest" customModuleProvider="target" sceneMemberID="viewController">
                     <navigationItem key="navigationItem" id="jjr-NC-zuE"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xGO-3s-gR2" userLabel="First Responder" sceneMemberID="firstResponder"/>

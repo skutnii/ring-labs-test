@@ -44,4 +44,23 @@ class FullImageController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    static let Title = "FullImageControllerTitle"
+    static let URL = "FullImageControllerURL"
+    override func encodeRestorableState(with coder: NSCoder) {
+        super.encodeRestorableState(with: coder)
+        
+        coder.encode(navigationItem.title, forKey:FullImageController.Title)
+        coder.encode(image?.url, forKey:FullImageController.URL)
+    }
+    
+    override func decodeRestorableState(with coder: NSCoder) {
+        navigationItem.title = coder.decodeObject(forKey: FullImageController.Title) as? String
+        let url = coder.decodeObject(forKey: FullImageController.URL) as? URL
+        guard nil != url else {
+            return
+        }
+        
+        image = WebImage(url!)
+    }
+    
 }
