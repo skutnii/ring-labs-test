@@ -9,10 +9,7 @@
 import Foundation
 
 class Feed : Thing {
-    var posts : [Post] = []
-    let timestamp = Date()
     
-    static let CHILDREN = "children"
     static let kind = "Listing"
     
     private static var cache: URL {
@@ -23,65 +20,61 @@ class Feed : Thing {
         }
     }
     
-    static var cached : Feed = {
-        let data = try? Data(contentsOf:cache)
-        guard nil != data else {
-            return Feed()
-        }
-        
-        do {
-            let raw = try JSONSerialization.jsonObject(with: data!, options: []) as? Thing.Raw
-            guard nil != raw else {
-                return Feed()
+    private static var _cached : Feed? = nil
+    
+    enum Err: Error {
+        case JSON
+    }
+    
+    static var cached : Feed {
+        get {
+            if (nil == _cached) {
+                do {
+                    let data = try Data(contentsOf:cache)
+                    
+                    let raw = try JSONSerialization.jsonObject(with: data, options: []) as? Thing.Raw
+                    guard nil != raw else {
+                        throw Err.JSON
+                    }
+                    
+                    _cached = Feed(raw: raw!)
+                } catch {
+                    _cached = Feed()
+                }
             }
             
-            return Feed(raw: raw!)
-        } catch {
-            return Feed()
+            return _cached!
         }
-    } ()
+        
+        set(feed) {
+            _cached = feed
+            guard nil != _cached else {
+                return
+            }
+            
+            do {
+                let data = try JSONSerialization.data(withJSONObject: _cached!.json, options: [])
+                try data.write(to: cache)
+            } catch {
+                print("Feed cache error")
+            }
+       }
+    }
     
     convenience init() {
         self.init(kind: Feed.kind)
     }
     
-    override func update(with data: Thing.Raw) {
-        let children = data[Feed.CHILDREN] as? [Thing.Raw]
-        guard nil != children else {
-            return
-        }
-        
-        posts = Post.parse(array:children!)
-    }
-    
     class func sync() -> Promise {
-        return Fetch.from("https://www.reddit.com/top.json").then {
-            res in
-            let data = res as? Data
-            guard nil != data else {
-                return cached
+        return Fetch.json("https://www.reddit.com/top.json?limit=50").then {
+            value in
+            let raw = value as? Raw
+            guard nil != raw else {
+                return Promise.reject("Invalid data format")
             }
             
-            do {
-                let value = try JSONSerialization.jsonObject(with: data!, options: [])
-                let raw = value as? Raw
-                guard nil != raw else {
-                    return Promise.reject("Invalid data format")
-                }
-                
-                do {
-                    //Don't let cache errors mess with flow, so catching separately
-                    try data!.write(to: cache)
-                } catch {
-                    print("Cache error")
-                }
-                
-                cached = Feed(raw: raw!)
-                return cached
-            } catch {
-                return cached
-            }
-            
+            cached = Feed(raw: raw!)
+            return cached
         } .then {
             res in
             for post in cached.posts {
@@ -89,6 +82,39 @@ class Feed : Thing {
             }
             
             return res
+        }
+    }
+    
+    class Keys {
+        static let children = "children"
+        static let kind = "kind"
+        static let before = "before"
+        static let after = "after"
+    }
+    
+    var posts : [Post] = []
+    var before: String?  = nil
+    var after: String? = nil
+    
+    override func update(with data: Thing.Raw) {
+        before = data[Keys.before] as? String
+        after = data[Keys.after] as? String
+        
+        let children = data[Keys.children] as? [Thing.Raw]
+        guard nil != children else {
+            return
+        }
+        
+        posts = Post.parse(array:children!)
+    }
+    
+    override var data : Thing.Raw {
+        get {
+            return [
+                Keys.children: posts.map {
+                    post in return post.json
+                }
+            ]
         }
     }
 }

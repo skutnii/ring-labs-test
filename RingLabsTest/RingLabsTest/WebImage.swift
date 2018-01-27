@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-//TODO: 
+//TODO: Cache cleanup
 class WebImage : Observable {
     
     static let Cache : URL = {

@@ -20,9 +20,11 @@ class Thing {
     func update(with data: Raw) {
         
     }
-    
-    static let KIND = "kind"
-    static let DATA = "data"
+
+    class Keys {
+        static let kind = "kind"
+        static let data = "data"
+    }
     
     class func parse<T: Thing>(array: [Raw]) -> [T] {
         return array.map {
@@ -31,14 +33,29 @@ class Thing {
     }
     
     required init(raw: Raw) {
-        let aKind = (raw[Thing.KIND] as? String) ?? "Thing"
+        let aKind = (raw[Keys.kind] as? String) ?? "Thing"
         self.kind = aKind
         
-        let data = raw[Thing.DATA] as? Thing.Raw
+        let data = raw[Keys.data] as? Thing.Raw
         guard nil != data else {
             return
         }
         
         self.update(with: data!)
+    }
+    
+    var data : Raw {
+        get {
+            return [:]
+        }
+    }
+    
+    final var json: Raw {
+        get {
+            return [
+                Keys.kind: self.kind,
+                Keys.data: self.data
+            ]
+        }
     }
 }

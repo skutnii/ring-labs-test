@@ -19,16 +19,28 @@ class Post : Thing {
     var thumbnail: WebImage?
     var preview: WebImage?
     
+    class Keys {
+        static let author = "author"
+        static let created = "created_utc"
+        static let title = "title"
+        static let thumbnail = "thumbnail"
+        static let preview = "preview"
+        static let images = "images"
+        static let source = "source"
+        static let numComments = "num_comments"
+        static let url = "url"
+    }
+    
     override func update(with data: Thing.Raw) {
-        author = JSQ(data, "/author") as? String ?? ""
+        author = JSQ(data, Keys.author) as? String ?? ""
         
-        let utcTimestamp = JSQ(data, "/created_utc") as? TimeInterval ?? 0
+        let utcTimestamp = JSQ(data, Keys.created) as? TimeInterval ?? 0
         date = Date(timeIntervalSince1970:utcTimestamp)
         
         title = JSQ(data, "/title") as? String ?? ""
-        commentCount = JSQ(data, "/num_comments") as? Int ?? 0
+        commentCount = JSQ(data, Keys.numComments) as? Int ?? 0
         
-        let thumbLink = JSQ(data, "/thumbnail") as? String ?? "default"
+        let thumbLink = JSQ(data, Keys.thumbnail) as? String ?? "default"
         if (thumbLink != "default") {
             let thumbUrl = URL(string: thumbLink)
             if (nil != thumbUrl) {
@@ -36,12 +48,38 @@ class Post : Thing {
             }
         }
         
-        let previewSource = JSQ(data, "/preview/images/[0]/source/url") as? String
+        let previewQuery =  "/\(Keys.preview)/\(Keys.images)/[0]/\(Keys.source)/\(Keys.url)"
+        let previewSource = JSQ(data, previewQuery) as? String
         if (nil != previewSource) {
             let url = URL(string:previewSource!)
             if (nil != url) {
                 preview = WebImage(url!)
             }
+        }
+    }
+    
+    override var data : Thing.Raw {
+        get {
+            var values = super.data
+            values[Keys.author] = author
+            values[Keys.created] = date?.timeIntervalSince1970
+            values[Keys.title] = title
+            values[Keys.numComments] = commentCount
+            values[Keys.thumbnail] = thumbnail?.url.absoluteString ?? "default"
+            
+            if (nil != preview) {
+                values[Keys.preview] = [
+                    Keys.images: [
+                        [
+                            Keys.source: [
+                                Keys.url:preview!.url.absoluteString
+                            ]
+                        ]
+                    ]
+                ]
+            }
+            
+            return values
         }
     }
 }
