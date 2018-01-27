@@ -37,6 +37,10 @@ class Fetch {
         }
     }
     
+    class func url(_ url: URL) -> Promise {
+        return request(URLRequest(url:url))
+    }
+    
     class func from(_ link: String) -> Promise {
         let url = URL(string: link)
         guard nil != url else {

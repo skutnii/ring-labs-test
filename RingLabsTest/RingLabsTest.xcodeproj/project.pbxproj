@@ -25,6 +25,7 @@
 		2277F2CD201C8E9900100502 /* Observatory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CC201C8E9900100502 /* Observatory.swift */; };
 		2277F2CF201CA1A200100502 /* Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CE201CA1A200100502 /* Observers.swift */; };
 		2277F2D1201CADE800100502 /* JSQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D0201CADE800100502 /* JSQ.swift */; };
+		2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,6 +61,7 @@
 		2277F2CC201C8E9900100502 /* Observatory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observatory.swift; sourceTree = "<group>"; };
 		2277F2CE201CA1A200100502 /* Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observers.swift; sourceTree = "<group>"; };
 		2277F2D0201CADE800100502 /* JSQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSQ.swift; sourceTree = "<group>"; };
+		2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+MakeSubview.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -120,6 +122,7 @@
 				2277F2CC201C8E9900100502 /* Observatory.swift */,
 				2277F2CE201CA1A200100502 /* Observers.swift */,
 				2277F2D0201CADE800100502 /* JSQ.swift */,
+				2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */,
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
 				221C15B2201BB4FB007AB34F /* Feed.swift in Sources */,
 				2277F2CB201C8DE300100502 /* WebImage.swift in Sources */,

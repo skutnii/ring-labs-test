@@ -13,7 +13,7 @@ protocol Observer : AnyObject {
 }
 
 protocol Observable {
-    var watchScope: WatchScope { get }
+    var watch: WatchScope { get }
 }
 
 //TODO: thread safety

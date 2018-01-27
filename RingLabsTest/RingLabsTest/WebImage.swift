@@ -12,7 +12,7 @@ import UIKit
 class WebImage : Observable {
     
     private lazy var _scope = { [unowned self] in return WatchScope(self) }()
-    var watchScope: WatchScope {
+    var watch: WatchScope {
         get {
             return _scope
         }
@@ -22,6 +22,19 @@ class WebImage : Observable {
     var image: UIImage? = nil {
         didSet {
             _scope.notify()
+        }
+    }
+    
+    func fetch() -> Promise {
+        return Fetch.url(url).then {
+            result in
+            let data = result as? Data
+            guard nil != data else {
+                return nil
+            }
+            
+            self.image = UIImage(data:data!)
+            return self
         }
     }
     

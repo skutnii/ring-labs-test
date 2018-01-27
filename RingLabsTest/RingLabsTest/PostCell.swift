@@ -8,11 +8,80 @@
 
 import UIKit
 
-class PostCell: UITableViewCell {
+class PostCell: UITableViewCell, Observer {
+    
+    class View : UIView {
+        static let Height : CGFloat = 200.0
+        static let Spacing : CGFloat = 8.0
+        static let LineHeight: CGFloat = 20.0
+        static let TitleHeight: CGFloat = 100.0
+        
+        lazy var thumbnail : UIImageView = { [unowned self] in return self.makeSubview() } ()
+        
+        lazy var titleLabel : UILabel = { [unowned self] in
+            let label : UILabel = self.makeSubview()
+            label.font = UIFont.boldSystemFont(ofSize: 18.0)
+            label.numberOfLines = 4
+            label.lineBreakMode = .byWordWrapping
+            return label
+        } ()
+        
+        func makeInfo() -> UILabel {
+            let label : UILabel = self.makeSubview()
+            label.font = UIFont.systemFont(ofSize: 14.0)
+            return label
+        }
+        
+        lazy var authorLabel: UILabel = { [unowned self] in return self.makeInfo() } ()
+        lazy var dateLabel: UILabel = { [unowned self] in return self.makeInfo() } ()
+        lazy var commentsLabel: UILabel = { [unowned self] in return self.makeInfo() } ()
+        
+        override func layoutSubviews() {
+            super.layoutSubviews()
+            var x = bounds.origin.x + View.Spacing
+            var y = bounds.origin.y + View.Spacing
+            var labelWidth = bounds.size.width - 2 * View.Spacing
+            
+            titleLabel.frame = CGRect(origin: CGPoint(x:x, y:y),
+                                      size:CGSize(width:labelWidth, height:View.TitleHeight))
+            
+            y += View.TitleHeight + View.Spacing
+            
+            if (nil == thumbnail.image) {
+                thumbnail.frame = CGRect.zero
+            } else {
+                let thumbSide = View.Height - View.TitleHeight - 3 * View.Spacing
+                thumbnail.frame = CGRect(origin:CGPoint(x: x, y:y),
+                                         size:CGSize(width: thumbSide, height: thumbSide))
+                x += thumbSide + View.Spacing
+                labelWidth -= thumbSide + View.Spacing
+            }
+            
+            for label in [authorLabel, dateLabel, commentsLabel] {
+                label.frame = CGRect(origin: CGPoint(x: x, y: y),
+                                     size:CGSize(width: labelWidth, height: View.LineHeight))
+                y += View.LineHeight + View.Spacing
+            }
+            
+        }
+    }
+    
     static let ID = "PostCell"
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
+    }
+    
+    lazy var view: View = {
+        [unowned self] in
+        let view = View(frame: contentView.bounds)
+        contentView.addSubview(view)
+        return view
+    }()
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        view.frame = contentView.bounds
     }
     
     init() {
@@ -20,8 +89,47 @@ class PostCell: UITableViewCell {
     }
     
     var post : Post? {
+        willSet {
+            post?.thumbnail?.watch.remove(watcher: self)
+            post?.preview?.watch.remove(watcher: self)
+        }
+        
         didSet {
-            //Update UI
+            post?.thumbnail?.watch.add(watcher: self)
+            post?.preview?.watch.add(watcher: self)
+            
+            updateUI()
+        }
+    }
+    
+    func updateUI() {
+        view.titleLabel.text = post?.title ?? ""
+        view.authorLabel.text = "Posted by \(post?.author ?? "")"
+        view.commentsLabel.text = "\(post?.commentCount ?? 0) comments"
+        
+        let date = post?.date
+        if (nil != date) {
+            let parts = Set<Calendar.Component>(arrayLiteral:.hour, .minute, .second)
+            let diff = NSCalendar.current.dateComponents(parts, from: date!, to: Date())
+            
+            if ((nil != diff.hour) && (diff.hour! > 0)) {
+                view.dateLabel.text = "\(diff.hour!) hours ago"
+            } else if ((nil != diff.minute) && (diff.minute! > 0)) {
+                view.dateLabel.text = "\(diff.minute!) minutes ago"
+            } else if ((nil != diff.second) && (diff.second! > 0)) {
+                view.dateLabel.text = "\(diff.second!) seconds ago"
+            }
+        }
+        
+        view.thumbnail.image = post?.thumbnail?.image
+        view.setNeedsLayout()
+    }
+    
+    func onChange(_ obj: AnyObject) {
+        if (obj === post?.thumbnail) {
+            DispatchQueue.main.async {
+                self.updateUI()
+            }
         }
     }
 

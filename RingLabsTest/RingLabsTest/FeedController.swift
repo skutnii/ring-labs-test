@@ -8,11 +8,13 @@
 
 import UIKit
 
-class FeedController: UIViewController, UITableViewDataSource {
+class FeedController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     var feed : Feed = Feed() {
         didSet {
-            self.contentView.reloadData()
+            DispatchQueue.main.async {
+                self.contentView.reloadData()
+            }
         }
     }
     
@@ -33,9 +35,14 @@ class FeedController: UIViewController, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return PostCell.View.Height
+    }
+    
     override func loadView() {
         let tView = UITableView(frame: CGRect.zero);
         tView.dataSource = self
+        tView.delegate = self
         self.view = tView
     }
 
@@ -61,12 +68,12 @@ class FeedController: UIViewController, UITableViewDataSource {
             
             return feed
         } .rescue { [weak self] error in
-                let message = (error as? String) ?? "Unknown error"
-                let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
-                let dismiss = UIAlertAction(title: "Close", style: .default)
-                alert.addAction(dismiss)
-                self?.present(alert, animated: true, completion: nil)
-                return nil
+            let message = (error as? String) ?? "Unknown error"
+            let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+            let dismiss = UIAlertAction(title: "Close", style: .default)
+            alert.addAction(dismiss)
+            self?.present(alert, animated: true, completion: nil)
+            return nil
         }
 
         preventLoad = true
