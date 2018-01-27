@@ -32,6 +32,14 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = (tableView.dequeueReusableCell(withIdentifier: PostCell.ID) as? PostCell) ?? PostCell()
         let post = feed.posts[indexPath.row]
         cell.post = post
+        
+        cell.onPostThumbnailClick = {
+            [unowned self] post in
+            if (nil != post) {
+                self.performSegue(withIdentifier: "FullSize", sender: post)
+            }
+        }
+        
         return cell
     }
     
@@ -58,7 +66,7 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
             return
         }
         
-        self.feed = Feed.cached ?? Feed()
+        self.feed = Feed.cached 
         _ = Feed.sync().then {
             [weak self] res in
             let feed = res as? Feed
@@ -67,7 +75,8 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
             }
             
             return feed
-        } .rescue { [weak self] error in
+        } .rescue {
+            [weak self] error in
             let message = (error as? String) ?? "Unknown error"
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Close", style: .default)
@@ -84,6 +93,13 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
         // Dispose of any resources that can be recreated.
     }
 
-
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if (segue.identifier == "FullSize") {
+            let post = sender as? Post
+            let dest = segue.destination as? FullImageController
+            dest?.navigationItem.title = post?.title
+            dest?.image = post?.preview
+        }
+    }
 }
 

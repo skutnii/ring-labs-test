@@ -44,7 +44,6 @@ class Feed : Thing {
             res in
             for post in cached.posts {
                 _ = post.thumbnail?.fetch()
-                _ = post.preview?.fetch()
             }
             
             return res

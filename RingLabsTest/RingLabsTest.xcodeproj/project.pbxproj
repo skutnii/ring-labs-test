@@ -26,6 +26,7 @@
 		2277F2CF201CA1A200100502 /* Observers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2CE201CA1A200100502 /* Observers.swift */; };
 		2277F2D1201CADE800100502 /* JSQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D0201CADE800100502 /* JSQ.swift */; };
 		2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */; };
+		2277F2D5201CE46200100502 /* FullImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D4201CE46200100502 /* FullImageController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +63,7 @@
 		2277F2CE201CA1A200100502 /* Observers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Observers.swift; sourceTree = "<group>"; };
 		2277F2D0201CADE800100502 /* JSQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSQ.swift; sourceTree = "<group>"; };
 		2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+MakeSubview.swift"; sourceTree = "<group>"; };
+		2277F2D4201CE46200100502 /* FullImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -123,6 +125,7 @@
 				2277F2CE201CA1A200100502 /* Observers.swift */,
 				2277F2D0201CADE800100502 /* JSQ.swift */,
 				2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */,
+				2277F2D4201CE46200100502 /* FullImageController.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2277F2D5201CE46200100502 /* FullImageController.swift in Sources */,
 				2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */,
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
 				221C15B2201BB4FB007AB34F /* Feed.swift in Sources */,
@@ -416,7 +420,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -432,7 +436,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 2ZRJ5KB8W3;
 				INFOPLIST_FILE = RingLabsTest/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.skutnii.RingLabsTest2;
 				PRODUCT_NAME = "$(TARGET_NAME)";

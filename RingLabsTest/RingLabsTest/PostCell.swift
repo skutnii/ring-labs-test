@@ -16,7 +16,13 @@ class PostCell: UITableViewCell, Observer {
         static let LineHeight: CGFloat = 20.0
         static let TitleHeight: CGFloat = 100.0
         
-        lazy var thumbnail : UIImageView = { [unowned self] in return self.makeSubview() } ()
+        lazy var thumbnail : UIButton = {
+            [unowned self] in
+            let button = UIButton(type:.custom)
+            self.addSubview(button)
+            button.addTarget(self, action: #selector(thumbClick(_:)), for: UIControlEvents.touchUpInside)
+            return button
+        } ()
         
         lazy var titleLabel : UILabel = { [unowned self] in
             let label : UILabel = self.makeSubview()
@@ -30,6 +36,11 @@ class PostCell: UITableViewCell, Observer {
             let label : UILabel = self.makeSubview()
             label.font = UIFont.systemFont(ofSize: 14.0)
             return label
+        }
+        
+        var onThumbClick : (() -> ())?
+        @objc func thumbClick(_ sender: AnyObject) {
+            onThumbClick?()
         }
         
         lazy var authorLabel: UILabel = { [unowned self] in return self.makeInfo() } ()
@@ -47,7 +58,7 @@ class PostCell: UITableViewCell, Observer {
             
             y += View.TitleHeight + View.Spacing
             
-            if (nil == thumbnail.image) {
+            if (nil == thumbnail.image(for: .normal)) {
                 thumbnail.frame = CGRect.zero
             } else {
                 let thumbSide = View.Height - View.TitleHeight - 3 * View.Spacing
@@ -72,10 +83,15 @@ class PostCell: UITableViewCell, Observer {
         super.init(coder: coder)
     }
     
+    var onPostThumbnailClick: ((Post?) -> ())?
     lazy var view: View = {
         [unowned self] in
         let view = View(frame: contentView.bounds)
         contentView.addSubview(view)
+        view.onThumbClick = {
+            self.onPostThumbnailClick?(self.post)
+        }
+        
         return view
     }()
     
@@ -121,7 +137,7 @@ class PostCell: UITableViewCell, Observer {
             }
         }
         
-        view.thumbnail.image = post?.thumbnail?.image
+        view.thumbnail.setImage(post?.thumbnail?.image, for:.normal)
         view.setNeedsLayout()
     }
     
