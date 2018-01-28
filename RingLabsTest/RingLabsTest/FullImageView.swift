@@ -10,7 +10,12 @@ import UIKit
 
 class FullImageView: UIView {
 
-    lazy var imageView: UIImageView = { [unowned self] in return self.makeSubview() }()
+    lazy var imageView: UIImageView = {
+        [unowned self] in
+        let image: UIImageView =  self.makeSubview()
+        image.contentMode = .scaleAspectFit
+        return image
+    }()
     
     lazy var spinner: UIActivityIndicatorView = { [unowned self] in
         let spinner = UIActivityIndicatorView(activityIndicatorStyle:.gray)
