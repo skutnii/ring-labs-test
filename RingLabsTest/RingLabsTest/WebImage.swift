@@ -68,7 +68,7 @@ class WebImage : Observable {
     }
     
     let url: URL
-    var image: UIImage? = nil {
+    var content: UIImage? = nil {
         didSet {
             _scope.notify()
         }
@@ -88,7 +88,7 @@ class WebImage : Observable {
                 print("WebImage cache error")
             }
             
-            self.image = UIImage(data:data!)
+            self.content = UIImage(data:data!)
             return self
         }
     }
@@ -100,6 +100,6 @@ class WebImage : Observable {
             return
         }
         
-        self.image = UIImage(data:data!)
+        self.content = UIImage(data:data!)
     }
 }

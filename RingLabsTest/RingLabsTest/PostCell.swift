@@ -137,7 +137,7 @@ class PostCell: UITableViewCell, Observer {
             }
         }
         
-        view.thumbnail.setImage(post?.thumbnail?.image, for:.normal)
+        view.thumbnail.setImage(post?.thumbnail?.content, for:.normal)
         view.setNeedsLayout()
     }
     

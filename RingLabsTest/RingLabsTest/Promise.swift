@@ -8,82 +8,46 @@
 
 import Foundation
 
-//Promise API as in JS
-protocol Thenable {
-    typealias Handler = (Any?) throws -> Any?
-    func then(_ block: @escaping Handler) -> Thenable
-}
-
-fileprivate class Sequence : Thenable {
-    var _body: Handler
-    var _next: Sequence?
-    
-    init(_ body: @escaping Handler) {
-        _body = body
-    }
-    
-    convenience init() {
-        self.init {
-            res in return res
-        }
-    }
-    
-    func then(_ block: @escaping Handler) -> Thenable {
-        return self.append(Sequence(block))
-    }
-    
-    func append(_ sequence: Sequence?) -> Sequence {
-        guard nil == _next else {
-            return _next!.append(sequence)
-        }
-        
-        _next = sequence
-        return self
-    }
-}
 
 class Promise {
+
+    typealias Handler = (Any?) throws -> Any?
+
+    private var _main : Handler
+    private var _rescue: Promise?
+    private var _next: Promise?
     
-    private var _main : Sequence
-    private var _rescue: Sequence?
-    
-    typealias Handler = Thenable.Handler
-    
-    private init(main: Sequence, rescue:Sequence?) {
+    private init(main: @escaping Handler) {
         _main = main
-        _rescue = rescue
     }
     
     convenience init() {
-        self.init(main: Sequence({ res in return res }), rescue: nil)
+        self.init(main: { res in return res })
     }
     
-    private func chain(next: Sequence?, resc: Sequence?) -> Promise {
-        _ = _main.append(next)
-        
-        if (nil == _rescue)  {
-            _rescue = resc
-        } else {
-            _ = _rescue!.append(resc)
+    private func chain(_ next: Promise?) -> Promise {
+        guard nil != _next else {
+            _next = next
+            return _next!
         }
         
-        return self
+        return _next!.chain(next)
     }
     
     private func next(value: Any?) -> Any? {
         do {
             
-            let result = try _main._body(value)
-            guard nil == result as? Promise else {
-                return (result as! Promise).chain(next: _main._next, resc: _rescue)
+            let result = try _main(value)
+            let deferred = result as? Promise
+            guard nil == deferred else {
+                return deferred!.chain(_next)
             }
             
-            let next = _main._next
-            guard nil != next else {
+            guard nil != _next else {
                 return result
             }
             
-            return Promise(main:next!, rescue:_rescue).next(value: result)
+            return _next!.next(value:result)
         } catch {
             reject(error)
             return nil
@@ -95,20 +59,30 @@ class Promise {
     }
     
     func reject(_ error: Any?) {
-        var err = error
-        var rescue: Sequence? = _rescue
-        while (nil != rescue) {
-            err = (try? rescue!._body(err)) ?? nil
-            rescue = rescue!._next
+        if (nil != _rescue) {
+            _rescue!.resolve(error)
+            return
         }
+        
+        if (nil != _next) {
+            _next!.reject(error)
+            return
+        }
+        
+        var description = "Unknown error"
+        if (nil != error as? String) {
+            description = error as! String
+        }
+        
+        print("\(description) uncaught in promise")
     }
     
     func then(_ block: @escaping Handler) -> Promise {
-        return self.chain(next: Sequence(block), resc: nil)
+        return self.chain(Promise(main:block))
     }
     
-    func rescue(_ block: @escaping Handler) -> Thenable {
-        _ = self.chain(next: nil, resc: Sequence(block))
+    func rescue(_ block: @escaping Handler) -> Promise {
+        _rescue = Promise(main:block)
         return _rescue!
     }
     
