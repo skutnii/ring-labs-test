@@ -27,6 +27,7 @@
 		2277F2D1201CADE800100502 /* JSQ.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D0201CADE800100502 /* JSQ.swift */; };
 		2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */; };
 		2277F2D5201CE46200100502 /* FullImageController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D4201CE46200100502 /* FullImageController.swift */; };
+		2277F2D7201DADC700100502 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2277F2D6201DADC700100502 /* Store.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -64,6 +65,7 @@
 		2277F2D0201CADE800100502 /* JSQ.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSQ.swift; sourceTree = "<group>"; };
 		2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIView+MakeSubview.swift"; sourceTree = "<group>"; };
 		2277F2D4201CE46200100502 /* FullImageController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullImageController.swift; sourceTree = "<group>"; };
+		2277F2D6201DADC700100502 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -126,6 +128,7 @@
 				2277F2D0201CADE800100502 /* JSQ.swift */,
 				2277F2D2201CC79000100502 /* UIView+MakeSubview.swift */,
 				2277F2D4201CE46200100502 /* FullImageController.swift */,
+				2277F2D6201DADC700100502 /* Store.swift */,
 			);
 			path = RingLabsTest;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 				2277F2D5201CE46200100502 /* FullImageController.swift in Sources */,
 				2277F2D3201CC79000100502 /* UIView+MakeSubview.swift in Sources */,
 				22173DEC201A18F600923D19 /* FeedController.swift in Sources */,
+				2277F2D7201DADC700100502 /* Store.swift in Sources */,
 				221C15B2201BB4FB007AB34F /* Feed.swift in Sources */,
 				2277F2CB201C8DE300100502 /* WebImage.swift in Sources */,
 				2277F2CD201C8E9900100502 /* Observatory.swift in Sources */,

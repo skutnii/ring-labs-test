@@ -8,29 +8,27 @@
 
 import UIKit
 
-class FeedController: UIViewController, UITableViewDataSource, UITableViewDelegate {
-    
-    var feed : Feed = Feed() {
-        didSet {
-            DispatchQueue.main.async {
-                self.contentView.reloadData()
-            }
-        }
-    }
-    
+class FeedController: UIViewController, UITableViewDataSource, UITableViewDelegate, Observer {
+        
     var contentView: UITableView {
         get {
             return view as! UITableView
         }
     }
     
+    var posts : [Post] {
+        get {
+            return Store.global.posts
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return feed.posts.count;
+        return posts.count;
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = (tableView.dequeueReusableCell(withIdentifier: PostCell.ID) as? PostCell) ?? PostCell()
-        let post = feed.posts[indexPath.row]
+        let post = posts[indexPath.row]
         cell.post = post
         
         cell.onPostThumbnailClick = {
@@ -56,38 +54,36 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        contentView.reloadData()
+        
+        Store.global.watch.add(watcher: self)
+        fetch()
     }
     
-    var preventLoad = false
-    
-    override func viewDidAppear(_ animated: Bool) {
-        if (preventLoad) {
-            return
-        }
-        
-        self.feed = Feed.cached 
-        _ = Feed.sync().then {
-            [weak self] res in
-            let feed = res as? Feed
-            if (nil != feed) {
-                self?.feed = feed!
+    func onChange(_ object: AnyObject) {
+        if (object === Store.global) {
+            DispatchQueue.main.async {
+                self.contentView.reloadData()
             }
-            
-            return feed
-        } .rescue {
-            [weak self] error in
+        }
+    }
+    
+    func fetch() {
+        _ = Store.global.fetch().rescue {
+            error in
             let message = (error as? String) ?? "Unknown error"
             let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
             let dismiss = UIAlertAction(title: "Close", style: .default)
             alert.addAction(dismiss)
-            self?.present(alert, animated: true, completion: nil)
+            self.present(alert, animated: true, completion: nil)
+            
             return nil
         }
-
-        preventLoad = true
     }
-
+    
+    var preventLoad = false
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -99,6 +95,24 @@ class FeedController: UIViewController, UITableViewDataSource, UITableViewDelega
             let dest = segue.destination as? FullImageController
             dest?.navigationItem.title = post?.title
             dest?.image = post?.preview
+        }
+    }
+    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let paths = contentView.indexPathsForVisibleRows
+        guard nil != paths else {
+            return
+        }
+        
+        var row = 0
+        for path in paths! {
+            if (path.row > row) {
+                row = path.row
+            }
+        }
+        
+        if (row == posts.count - 1) {
+            fetch()
         }
     }
 }
